@@ -21,4 +21,10 @@ class App extends Component {
   }
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return { items: state.items };
+};
+
+export default connect(mapStateToProps) App;
+
+//this function specifies which changes within the store should prompt a rerender
