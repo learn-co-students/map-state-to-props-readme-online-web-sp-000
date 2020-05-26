@@ -1,24 +1,62 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
+
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux'; /* code change */
+// import './App.css';
+
+// class App extends Component {
+//
+//   handleOnClick() {
+//     this.props.dispatch({
+//       type: 'INCREASE_COUNT',
+//     });
+//   }
+//
+//   render() {
+//     return (
+//       <div className="App">
+//         <button onClick={(event) => this.handleOnClick()}>
+//           Click
+//         </button>
+//         <p>{this.props.items.length}</p>
+//       </div>
+//     );
+//   }
+// };
 
 class App extends Component {
 
-  handleOnClick() {
-    this.props.dispatch({
-      type: 'INCREASE_COUNT',
-    });
-  }
+ handleOnClick() {
+   this.props.dispatch({
+     type: 'INCREASE_COUNT',
+   });
+ }
 
-  render() {
-    return (
-      <div className="App">
-        <button onClick={(event) => this.handleOnClick()}>
-          Click
-        </button>
-        <p>{this.props.items.length}</p>
-      </div>
-    );
-  }
+ render() {
+   return (
+     <div className="App">
+       <button onClick={() => this.handleOnClick()}>
+         Click
+       </button>
+       <p>{this.props.items.length}</p>
+     </div>
+   );
+ }
 };
 
-export default App;
+// start of code change
+const mapStateToProps = (state) => {
+  return { items: state.items }
+}
+
+// const mapStateToProps = (state) => {
+//  return { items: state.items };
+// };
+
+//export default App;
+export default connect(mapStateToProps)(App);
+
+//export default connect(mapStateToProps)(App);
+// end of code change
