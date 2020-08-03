@@ -1,24 +1,26 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import { connect } from 'react-redux' /* code change */
+import './App.css'
 
 class App extends Component {
-
-  handleOnClick() {
+  handleOnClick () {
     this.props.dispatch({
-      type: 'INCREASE_COUNT',
-    });
+      type: 'INCREASE_COUNT'
+    })
   }
 
-  render() {
+  render () {
     return (
-      <div className="App">
-        <button onClick={(event) => this.handleOnClick()}>
-          Click
-        </button>
+      <div className='App'>
+        <button onClick={event => this.handleOnClick()}>Click</button>
         <p>{this.props.items.length}</p>
       </div>
-    );
+    )
   }
-};
+}
 
-export default App;
+const mapStateToProps = state => {
+  return { items: state.items }
+}
+
+export default connect(mapStateToProps)(App)
