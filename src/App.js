@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'; /* code change */
 import './App.css';
 
 class App extends Component {
 
-  handleOnClick() {
+  handleOnClick () {
     this.props.dispatch({
       type: 'INCREASE_COUNT',
     });
@@ -21,4 +22,9 @@ class App extends Component {
   }
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return { items: state.items }
+}
+
+export default 
+connect(mapStateToProps)(App);
