@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
@@ -21,4 +22,12 @@ class App extends Component {
   }
 };
 
-export default App;
+// two goals here:
+// (a) to only re-render our App component when specific changes to the state occur, and
+// (b) to only provide the slice of the state that we need to our App component
+
+const mapStateToProps = (state) => {
+  return { items: state.items };
+};
+
+export default connect(mapStateToProps)(App);
