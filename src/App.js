@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'; /* code change */
 import './App.css';
+import { connect } from 'react-redux';
+import { addItem } from  './actions/items';
  
 class App extends Component {
  
-  handleOnClick() {
-    this.props.dispatch({
-      type: 'INCREASE_COUNT',
-    });
+  handleOnClick = event => {
+    this.props.addItem()
   }
  
   render() {
+    debugger
     return (
       <div className="App">
-        <button onClick={() => this.handleOnClick()}>
+        <button onClick={this.handleOnClick}>
           Click
-        </button>
+          </button>
         <p>{this.props.items.length}</p>
       </div>
     );
   }
 };
  
-// start of code change
 const mapStateToProps = (state) => {
-  return { items: state.items };
+  return {
+    items: state.items
+  };
 };
  
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { addItem })(App);
 // end of code change
 
