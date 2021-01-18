@@ -1,4 +1,4 @@
-### Summary
+#### Summary
 
 When we last left off, we successfully used our __createStore()__ method, and
 integrated the method into our __React__ application to update our state.
