@@ -34,6 +34,7 @@ class App extends Component {
 }
  
 const mapStateToProps = (state) => {
+  console.log('Gotta put my mark somewhere')
   return { items: state.items }
 }
  
