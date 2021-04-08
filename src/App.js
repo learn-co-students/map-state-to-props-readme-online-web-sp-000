@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
 
-class App extends Component {
+ class App extends Component {
 
   handleOnClick() {
     this.props.dispatch({
@@ -21,4 +22,10 @@ class App extends Component {
   }
 };
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    items: state.items
+  };
+};
+
+export default connect(mapStateToProps) (App);
