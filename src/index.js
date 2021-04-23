@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux'; /* code change */
 import shoppingListItemReducer from './reducers/shoppingListItemReducer';
 import App from './App';
 import './index.css';
@@ -11,6 +12,9 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <App store={store}/>,
+  //use provider to wrap our react application and pass store instance as a prop to make it available to other components 
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
